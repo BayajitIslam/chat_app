@@ -53,7 +53,7 @@ class RegisterPages extends StatelessWidget {
 
             //Login Button
             const SizedBox(height: 15),
-            MyButton(buttonName: 'Login', ontap: register),
+            MyButton(buttonName: 'Register', ontap: register),
 
             //Allready Have Account ? Register Now
             const SizedBox(height: 10,),
