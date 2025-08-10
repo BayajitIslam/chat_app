@@ -35,7 +35,6 @@ class _LoginPagesState extends State<LoginPages> {
       //catch any erore
     } catch (e) {
       //pop  loading
-      if (!mounted) return;
       popPages();
       //show erore
       snackbar(e.toString());
