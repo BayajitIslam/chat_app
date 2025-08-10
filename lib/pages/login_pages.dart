@@ -1,16 +1,68 @@
 import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/my_textfield.dart';
+import 'package:chat_app/firebase_service/firebase_service.dart';
 import 'package:flutter/material.dart';
 
-class LoginPages extends StatelessWidget {
+class LoginPages extends StatefulWidget {
+  final void Function()? ontap;
+  const LoginPages({super.key, required this.ontap});
+
+  @override
+  State<LoginPages> createState() => _LoginPagesState();
+}
+
+class _LoginPagesState extends State<LoginPages> {
   //email and pw text Controller
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _pwController = TextEditingController();
-  final void Function()? ontap;
-  LoginPages({super.key,required this.ontap});
 
   //firebase auth log in method
-  void login() {}
+  void login() async {
+    //firebase init
+    final FirebaseService firebaseService = FirebaseService();
+    //show  loading
+    loadingCircle();
+    //try login
+    try {
+      await firebaseService.signin(
+        email: _emailController.text,
+        password: _pwController.text,
+      );
+      //pop loading
+      if (!mounted) return;
+      popPages();
+      //catch any erore
+    } catch (e) {
+      //pop  loading
+      if (!mounted) return;
+      popPages();
+      //show erore
+      snackbar(e.toString());
+    }
+  }
+
+  //loading  circle
+  void loadingCircle() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator.adaptive());
+      },
+    );
+  }
+
+  //pop pages
+  void popPages() {
+    Navigator.pop(context);
+  }
+
+  //snackbar show erore
+  void snackbar(String eroreMessage) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(eroreMessage)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +99,13 @@ class LoginPages extends StatelessWidget {
             MyButton(buttonName: 'Login', ontap: login),
 
             //Allready Have Account ? Register Now
-            const SizedBox(height: 10,),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Don\'t have account ? '),
                 GestureDetector(
-                  onTap: ontap,
+                  onTap: widget.ontap,
                   child: Text(
                     'Regiser Now',
                     style: TextStyle(fontWeight: FontWeight.bold),
