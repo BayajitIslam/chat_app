@@ -68,11 +68,11 @@ class _HomePagesState extends State<HomePages> {
 
   //build individual list tile for user
   Widget _buiildUserListItem(Map<String, dynamic> userData) {
-    return UserTile(
-      email: userData['email'],
-      ontap: () {
-        
-      },
-    );
+    if (userData['email'] != _firebaseService.currentUser!.email) {
+      return UserTile(email: userData['email'],
+       ontap: () {});
+    } else {
+      return Container();
+    }
   }
 }
