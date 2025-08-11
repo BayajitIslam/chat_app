@@ -1,5 +1,5 @@
 import 'package:chat_app/firebase_options.dart';
-import 'package:chat_app/firebase_service/auth_gate.dart';
+import 'package:chat_app/service/auth_service/auth_gate.dart';
 import 'package:chat_app/pages/home_pages.dart';
 import 'package:chat_app/pages/setting_pages.dart';
 import 'package:chat_app/theme/light_mode.dart';

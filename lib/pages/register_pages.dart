@@ -1,6 +1,6 @@
 import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/my_textfield.dart';
-import 'package:chat_app/firebase_service/firebase_service.dart';
+import 'package:chat_app/service/auth_service/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPages extends StatefulWidget {
@@ -48,6 +48,7 @@ class _RegisterPagesState extends State<RegisterPages> {
       }
     } else {
       //pop  loadin
+      if (!mounted) return;
       popPages();
       //show erore
       snackbar('Password doesn\'t match');

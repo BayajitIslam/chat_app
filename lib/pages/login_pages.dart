@@ -1,6 +1,6 @@
 import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/my_textfield.dart';
-import 'package:chat_app/firebase_service/firebase_service.dart';
+import 'package:chat_app/service/auth_service/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPages extends StatefulWidget {
@@ -35,6 +35,7 @@ class _LoginPagesState extends State<LoginPages> {
       //catch any erore
     } catch (e) {
       //pop  loading
+      if (!mounted) return;
       popPages();
       //show erore
       snackbar(e.toString());
