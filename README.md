@@ -6,6 +6,9 @@ A new Flutter project.
 <img width="408" height="864" alt="image" src="https://github.com/user-attachments/assets/fedfc2b3-458d-49a2-b773-abed0ac429f9" />
 <img width="408" height="864" alt="image" src="https://github.com/user-attachments/assets/a4869184-9334-4969-80c9-fdef8455da38" /> 
 
+# Chat App - Home Pages Screenshorts
+<img width="408" height="864" alt="image" src="https://github.com/user-attachments/assets/9cb7a038-ce69-4b3e-8776-1277d534a5b5" />
+
 
 
 ## Getting Started
