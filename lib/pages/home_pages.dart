@@ -1,5 +1,6 @@
 import 'package:chat_app/components/my_drawer.dart';
 import 'package:chat_app/components/user_tile.dart';
+import 'package:chat_app/pages/chat_pages.dart';
 import 'package:chat_app/service/auth_service/firebase_service.dart';
 import 'package:chat_app/service/chat_service/firestore_chat.dart';
 import 'package:flutter/material.dart';
@@ -69,8 +70,17 @@ class _HomePagesState extends State<HomePages> {
   //build individual list tile for user
   Widget _buiildUserListItem(Map<String, dynamic> userData) {
     if (userData['email'] != _firebaseService.currentUser!.email) {
-      return UserTile(email: userData['email'],
-       ontap: () {});
+      return UserTile(
+        email: userData['email'],
+        ontap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChatPages(reciverMail: userData['email']),
+            ),
+          );
+        },
+      );
     } else {
       return Container();
     }
