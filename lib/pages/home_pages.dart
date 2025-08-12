@@ -76,7 +76,7 @@ class _HomePagesState extends State<HomePages> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ChatPages(reciverMail: userData['email']),
+              builder: (context) => ChatPages(reciverMail: userData['email'],reciverId: userData['uid'],),
             ),
           );
         },
