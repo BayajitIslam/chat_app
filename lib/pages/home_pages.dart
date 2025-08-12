@@ -49,12 +49,12 @@ class _HomePagesState extends State<HomePages> {
       builder: (context, snapshot) {
         //errore
         if (snapshot.hasError) {
-          return const Text('Errore');
+          return Center(child: const Text('Errore'));
         }
 
         //load
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text('Loading');
+          return Center(child: const Text('Loading'));
         }
 
         //listview
