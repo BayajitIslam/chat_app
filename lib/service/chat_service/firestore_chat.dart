@@ -56,7 +56,7 @@ class FirestoreChat {
     //contstruct a chatroom id for ther two user
     List<String> ids = [userID, otherUserId];
     ids.sort();
-    String chatRoomId = ids.join();
+    String chatRoomId = ids.join("_");
 
     return firestore
         .collection("chat_rooms")
